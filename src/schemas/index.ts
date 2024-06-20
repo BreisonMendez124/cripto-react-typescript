@@ -1,15 +1,20 @@
-import * as v from 'valibot'
+import { object , string , array } from 'valibot'
 
-export const CurrencySchema = v.object( { 
-    code: v.string(),
-    name: v.string()
+export const CurrencySchema = object( { 
+    code: string(),
+    name: string()
 })
 
-export const CryptoCurrencyResponseSchema = v.object( { 
-        CoinInfo: v.object({ 
-            FullName: v.string(),    
-            Name: v.string()
+export const CryptoCurrencyResponseSchema = object( { 
+        CoinInfo: object({ 
+            FullName: string(),    
+            Name: string()
         })
     })
 
-export const CryptoCurrenciesResponseSchema = v.array( CryptoCurrencyResponseSchema );
+export const CryptoCurrenciesResponseSchema = array( CryptoCurrencyResponseSchema );
+
+export const PairSchema = object({ 
+    currency: string(),
+    criptocurrency: string()
+})
