@@ -18,3 +18,12 @@ export const PairSchema = object({
     currency: string(),
     criptocurrency: string()
 })
+
+export const CryptoPriceSchema = object( { 
+    IMAGEURL: string(),
+    PRICE: string(),
+    HIGHDAY: string(),
+    LOWDAY: string(),
+    CHANGEPCT24HOUR: string(),
+    LASTUPDATE: string()
+})

@@ -1,10 +1,11 @@
 import { create } from "zustand";
-import { Cryptocurrency } from "./types";
-import { getCryptos } from "./services/CryptoService";
+import { Cryptocurrency, Pair } from "./types";
+import { fetchCurrentCryptoPrice, getCryptos } from "./services/CryptoService";
 
 type CryptoStore = { 
     cryptocurrencies: Cryptocurrency[]
     fetchCryptos: () => Promise<void>
+    fetchData: ( pair : Pair ) => Promise<void>
 }
 
 export const useCryptoStore = create<CryptoStore>(( set ) => ({ 
@@ -15,5 +16,9 @@ export const useCryptoStore = create<CryptoStore>(( set ) => ({
         set(() => ({
             cryptocurrencies
         }))
+    },
+    fetchData: async( pair ) => { 
+        const resultData = await fetchCurrentCryptoPrice( pair )
+        console.log( resultData );
     }
 }))
